@@ -36,6 +36,15 @@ exports.user_details = function (req, res) {
     })
 };
 
+exports.get_many = function (req, res) {
+    var limit = Number(req.params.number);
+    User.find({}).limit(limit).exec(function(err, data){
+        if(err) throw new Error(err);
+        res.send(data);
+    });
+};
+
+
 exports.user_update = function (req, res) {
     User.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, user) {
         if (err) return next(err);

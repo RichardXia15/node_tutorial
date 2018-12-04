@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var cors = require('cors');
 
 //setting up mongoose 
 const mongoose = require('mongoose');
@@ -15,6 +16,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const user = require('./routes/user.route');
 
 const app = express();
+app.use(cors());
 
 //body parser
 app.use(bodyParser.json());
